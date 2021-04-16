@@ -8,7 +8,7 @@ set -e -x
 for PYBIN in /opt/python/*/bin; do
     "${PYBIN}/pip" install nose coverage #-r /io/dev-requirements.txt
     if [ $(uname -m) == "aarch64" ]; then
-        sudo apt-get install libblas-dev  liblapack-dev
+        apt-get install libblas-dev  liblapack-dev
     fi
     "${PYBIN}/pip" wheel /io/ -w wheelhouse/
 done
