@@ -36,6 +36,9 @@ matrix:
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker pull $DOCKER_IMAGE; fi
+  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+    sudo apt-get install libblas-dev  liblapack-dev
+    fi
 
 script:
   - make version
