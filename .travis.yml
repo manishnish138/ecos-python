@@ -26,6 +26,10 @@ matrix:
         - docker
       env: DOCKER_IMAGE=quay.io/pypa/manylinux1_i686
            PRE_CMD=linux32
+    - sudo: required
+      services:
+        - docker
+      env: DOCKER_IMAGE=quay.io/pypa/manylinux2014_aarch64
     - os: osx
       env: PYTHON=python3
 
