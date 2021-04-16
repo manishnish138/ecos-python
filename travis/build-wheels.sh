@@ -5,8 +5,7 @@ set -e -x
 #yum install -y atlas-devel
 
 if [ $(uname -m) == "aarch64" ]; then
-    yum update
-    yum install -y libblas-dev  liblapack-dev
+    yum install -y blas-devel lapack-devel
 fi
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
