@@ -7,6 +7,9 @@ set -e -x
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
     "${PYBIN}/pip" install nose coverage #-r /io/dev-requirements.txt
+    if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+        sudo apt-get install libblas-dev  liblapack-dev
+    fi
     "${PYBIN}/pip" wheel /io/ -w wheelhouse/
 done
 
