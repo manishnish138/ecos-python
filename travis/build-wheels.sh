@@ -5,6 +5,7 @@ set -e -x
 #yum install -y atlas-devel
 
 if [ $(uname -m) == "aarch64" ]; then
+    yum update
     yum install -y libblas-dev  liblapack-dev
 fi
 # Compile wheels
