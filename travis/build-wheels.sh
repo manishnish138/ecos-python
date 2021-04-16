@@ -4,12 +4,12 @@ set -e -x
 # Install a system package required by our library
 #yum install -y atlas-devel
 
+if [ $(uname -m) == "aarch64" ]; then
+    yum install -y libblas-dev  liblapack-dev
+fi
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
     "${PYBIN}/pip" install nose coverage #-r /io/dev-requirements.txt
-    if [ $(uname -m) == "aarch64" ]; then
-        apt-get install libblas-dev  liblapack-dev
-    fi
     "${PYBIN}/pip" wheel /io/ -w wheelhouse/
 done
 
