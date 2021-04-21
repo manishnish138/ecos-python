@@ -41,6 +41,6 @@ install:
 
 script:
   - make version
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run --rm -v `pwd`:/io $DOCKER_IMAGE $PRE_CMD /io/travis/build-wheels.sh; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then travis_wait 40 docker run --rm -v `pwd`:/io $DOCKER_IMAGE $PRE_CMD /io/travis/build-wheels.sh; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./travis/build-osx-wheels.sh; fi
   - ls wheelhouse/
